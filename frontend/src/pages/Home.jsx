@@ -13,7 +13,7 @@ const Home = () => {
   const [translatedText, SettranslatedText] = useState('');
 
 
-  const url = 'http://localhost:3000/translator'; 
+  const url = 'https://translator-xr5w.onrender.com'; 
 
   const translate = async (e) => {
     e.preventDefault();
