@@ -13,7 +13,7 @@ const Home = () => {
   const [translatedText, SettranslatedText] = useState('');
 
 
-  const url = 'https://translator-xr5w.onrender.com'; 
+  const url = 'http://localhost:3000/translator';
 
   const translate = async (e) => {
     e.preventDefault();
@@ -45,30 +45,53 @@ const Home = () => {
 
   return (
 
-    <div className='w-screen h-screen flex items-center justify-start'>
-      <div className=' justify-center h-full w-full flex flex-col items-center bg-gray-200'>
-        <div className='w-full flex flex-col items-center justify-center'>
-          <input type="text" value={text} placeholder='Enter your text' onChange={(e) => { Settext(e.target.value) }} className='p-3 m-5 border-none outline-none w-[400px] text-center text-gray-800 text-lg' />
-          {showop && (<output className='p-3 m-5 border-none outline-none w-[400px] text-center text-lg bg-white text-black'>{
-            loading ? 'Please Wait Translating...' : translatedText
-          }</output>)}
+    <div className="w-screen min-h-screen flex items-center justify-start h-screen">
+      <div className="flex flex-col items-center justify-center w-full h-full bg-gray-200 p-4">
+
+        {/* Input and Output Section */}
+        <div className="w-full max-w-md flex flex-col items-center justify-center">
+          <input
+            type="text"
+            value={text}
+            placeholder="Enter your text"
+            onChange={(e) => Settext(e.target.value)}
+            className="p-3 m-3 w-full text-center text-gray-800 text-base sm:text-lg rounded-md shadow-sm"
+          />
+          {showop && (
+            <output className="p-3 m-3 w-full text-center text-base sm:text-lg bg-white text-black rounded-md shadow">
+              {loading ? 'Please Wait Translating...' : translatedText}
+            </output>
+          )}
         </div>
-        <div className='w-full flex items-center justify-center '>
-          <select className='outline-none border-none  text-center px-4 py-2' onChange={(e) => { Setlang(e.target.value) }}>
-            <option value="null" className='border-none outline-none'>Select Language</option>
-            <option value="ta" className='border-none outline-none'>Tamil</option>
-            <option value="hi" className='border-none outline-none'>Hindi</option>
-            <option value="te" className='border-none outline-none'>Telugu</option>
-            <option value="be" className='border-none outline-none'>Bengali</option>
-            <option value="ka" className='border-none outline-none'>Kannada</option>
+
+        {/* Language Dropdown */}
+        <div className="w-full max-w-md flex items-center justify-center">
+          <select
+            className="w-full px-4 py-2 text-center text-gray-700 rounded-md shadow-sm outline-none"
+            onChange={(e) => Setlang(e.target.value)}
+          >
+            <option value="null">Select Language</option>
+            <option value="ta">Tamil</option>
+            <option value="hi">Hindi</option>
+            <option value="te">Telugu</option>
+            <option value="be">Bengali</option>
+            <option value="ka">Kannada</option>
           </select>
         </div>
-        <div className='w-full flex items-center justify-center'>
-          <button onClick={translate} className='text-sm border-none font-semibold  bg-black text-white p-3 m-5 outline-none' >TRANSLATE</button>
-        </div>
-      </div>
 
+        {/* Translate Button */}
+        <div className="w-full max-w-md flex items-center justify-center">
+          <button
+            onClick={translate}
+            className="w-full bg-black text-white font-semibold py-3 px-6 m-3 text-sm rounded-md hover:bg-gray-800 transition duration-200"
+          >
+            TRANSLATE
+          </button>
+        </div>
+
+      </div>
     </div>
+
   )
 }
 
